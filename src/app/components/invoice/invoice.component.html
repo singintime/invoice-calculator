@@ -1,0 +1,54 @@
+<div *ngIf="query && orders">
+  <div class="summary">
+    <div class="summary_field">
+      <h3>Start Date</h3>
+      <p>{{ query.startDate | date:'dd LLL yyyy' }}</p>
+    </div>
+    <div class="summary_field">
+      <h3>End Date</h3>
+      <p>{{ query.endDate | date:'dd LLL yyyy' }}</p>
+    </div>
+    <div class="summary_field">
+      <h3>N. of Days</h3>
+      <p>{{ query.deltaDays }}</p>
+    </div>
+    <div class="summary_field">
+      <h3>Amount to Invoice</h3>
+      <div>
+        <span *ngFor="let currencies of invoiceAmount">{{ currencies.amount }} {{ currencies.currency }}</span>
+      </div>
+    </div>
+    <div class="summary_field">
+      <h3>N. of Orders</h3>
+      <p>{{ orders.length }}</p>
+    </div>
+  </div>
+
+  <h2>Order Details</h2>
+  <table class="detail">
+    <tr>
+      <th>Recipient Name</th>
+      <th>Email</th>
+      <th>Total Price</th>
+      <th>Date</th>
+      <th>Items</th>
+      <th>Delivery</th>
+      <th>Method</th>
+    </tr>
+    <tr *ngFor="let order of orders, let i = index" [ngClass]="{even: i % 2 === 0}">
+      <td>{{ order.recipient.name }}</td>
+      <td>{{ order.recipient.email }}</td>
+      <td>
+        <p class="currency" *ngFor="let currencies of order.totalPrice">
+          {{ currencies.amount }} {{ currencies.currency }}
+        </p>
+      </td>
+      <td>{{ order.createdAt | date:'dd LLL yyyy' }}</td>
+      <td>
+        <p class="order_item" *ngFor="let item of order.items">{{ item.quantity }}x {{ item.name }}</p>
+      </td>
+      <td>{{ order.delivery.courier }}</td>
+      <td>{{ order.delivery.method }}</td>
+    </tr>
+  </table>
+</div>

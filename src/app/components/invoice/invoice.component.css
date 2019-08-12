@@ -1,0 +1,45 @@
+table {
+  width: 100%;
+  border-spacing: 0;
+  text-align: center;
+}
+
+th, tr, td {
+  margin: 0;
+  padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid #888;
+}
+
+.order_item {
+  margin: 0.25rem;
+  text-align: left;
+}
+
+.currency {
+  margin: 0.25rem;
+  text-align: right;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
+}
+
+.h3 {
+  margin: 0.1rem;
+}
+
+.summary {
+  color: #fff;
+  background-color: #673ab7;
+  text-align: center;
+}
+
+.summary_field {
+  display: inline-block;
+  margin: 0 2rem;
+}
+
+.even {
+  background-color: #eee;
+}

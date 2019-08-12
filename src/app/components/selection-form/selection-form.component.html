@@ -1,0 +1,23 @@
+<form [formGroup]="selectionForm" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label>Customer</mat-label>
+    <mat-select id="customer" formControlName="customerId">
+      <mat-option [value]="''" disabled>Choose a customer...</mat-option>
+      <mat-option *ngFor="let customer of customers" [value]="customer.id">{{ customer.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Start Date</mat-label>
+    <input matInput [matDatepicker]="startDatePicker" placeholder="Choose a date" formControlName="startDate">
+    <mat-datepicker-toggle matSuffix [for]="startDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #startDatePicker></mat-datepicker>
+  </mat-form-field>
+  <mat-form-field>
+      <mat-label>End Date</mat-label>
+    <input matInput [matDatepicker]="endDatePicker" placeholder="Choose a date" formControlName="endDate">
+    <mat-datepicker-toggle matSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+    <mat-datepicker #endDatePicker></mat-datepicker>
+  </mat-form-field>
+  <button mat-flat-button color="primary" type="submit">View Orders</button>
+</form>
+
